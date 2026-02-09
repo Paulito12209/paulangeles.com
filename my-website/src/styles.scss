@@ -23,8 +23,8 @@
   --content-padding: 2rem;
 
   /* Abstände */
-  --section-spacing: 3.5rem;
-  /* ~56px wie gewünscht */
+  --section-spacing: 5rem;
+  /* Größerer Abstand für sauberes Snapping */
   --card-gap: 1.5rem;
 
   /* Übergangszeiten */
@@ -155,25 +155,38 @@ p {
    Sections
    ================================================ */
 section {
-  /* Padding normalisieren */
+  /* Padding normalisieren - Größerer Abstand oben für Alignment */
   padding: var(--section-spacing) 0;
   position: relative;
 
-  /* Reset scroll-margin, da wir JS Scrolling nutzen */
-  scroll-margin-top: 0;
+  /* CSS Fallback für Scroll-Position (z.B. Direktlinks) */
+  /* Wir nutzen einen negativen Margin-Top Trick oder setzen das Margin auf die H2 */
+  scroll-margin-top: 96px;
 
   /* Hero Section ist IMMER aktiv/sichtbar */
   &.hero {
     opacity: 1;
     filter: grayscale(0%);
+    scroll-margin-top: 0;
   }
+}
+
+/* Spezifisches Scroll-Margin für Überschriften um Label zu überspringen */
+section h2 {
+  scroll-margin-top: 96px;
+}
+
+section.tools h2 {
+  scroll-margin-top: 140px;
 }
 
 /* Section Labels - Standard: Rot/Pulsierend (Global) */
 .section-label {
   position: relative;
   z-index: 20;
-  margin-top: 16px;
+  display: block;
+  margin-bottom: 4rem;
+  /* Massiver Puffer für unsichtbare Labels beim Einrasten */
 
   /* Gradient Animation Text */
   background: linear-gradient(90deg, #911E21, #ff5e62, #911E21, #ff5e62, #911E21);

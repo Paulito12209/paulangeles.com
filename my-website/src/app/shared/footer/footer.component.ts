@@ -18,9 +18,9 @@ export class FooterComponent {
     /** Aktuelles Jahr für Copyright */
     currentYear = new Date().getFullYear();
 
-    /** Scrollt zur Hero-Sektion (Logo-Klick) */
     scrollToTop(event: Event): void {
-        if (this.router.url !== '/') {
+        const url = this.router.url.split('#')[0];
+        if (url !== '/' && url !== '') {
             return;
         }
         event.preventDefault();

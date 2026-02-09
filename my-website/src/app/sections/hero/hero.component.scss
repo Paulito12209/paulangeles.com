@@ -14,9 +14,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 0;
+    justify-content: space-between;
+    /* Content weiter oben starten lassen */
+    padding-top: calc(var(--nav-height) + 3rem);
     position: relative;
+    overflow: hidden;
+    /* Verhindert Scrollbars bei großen Ringen */
     background: #FFFFFF;
 
     /* Mobile: Volle Höhe */
@@ -24,7 +27,7 @@
         height: 100dvh;
         min-height: auto;
         /* Überschreibt Desktop min-height */
-        justify-content: space-between;
+        /* justify-content: space-between; - Bereits Standard */
         padding: 70px 0 0;
         /* Nur oben Padding für Nav, unten keines */
     }
@@ -43,6 +46,7 @@
     width: 100%;
     max-width: var(--wrapper-max-width);
     padding: 0 var(--wrapper-padding-inline);
+    /* Horizontales Center, kein vertikales Center mehr */
     margin: 0 auto clamp(1rem, 3vw, 3rem) auto;
     /* Fluid Margin bottom für Abstand zum Button */
     position: relative;
@@ -53,19 +57,24 @@
         text-align: center;
         padding: 0 24px;
         gap: 2rem;
+        /* Reset Auto Margins auf Mobile wenn nötig */
+        margin: 0 auto clamp(1rem, 3vw, 3rem) auto;
     }
 }
 
 /* BEM Element: hero__content */
 .hero__content {
-    flex: 1;
+    flex: 1 1 50%;
+    /* 50/50 Split */
     width: 50%;
     /* Explizit 50% Breite */
-    max-width: none;
+    max-width: 50%;
 
     @media (max-width: 900px) {
+        flex: 1 1 100%;
         width: 100%;
         max-width: 100%;
+        padding-right: 0;
     }
 }
 
@@ -118,18 +127,21 @@
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 4rem;
+    /* Margin Top entfernen, da Layout nun space-between */
+    margin-top: 0;
+    margin-bottom: 2rem;
+    /* Abstand zum Rand */
 
     @media (max-width: 768px) {
         margin-top: 1rem;
+        margin-bottom: 1rem;
     }
 
     background: none;
     border: none;
     cursor: pointer;
     transition: color var(--transition-normal);
-    padding-bottom: 8px;
-    /* Abstand zum unteren Rand */
+    padding-bottom: 0;
 
     &:hover .hero__scroll-text {
         color: var(--color-primary-light);
@@ -144,6 +156,11 @@
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+
+    @media (max-width: 768px) {
+        display: none;
+        /* Auf Mobile ausblenden */
+    }
 }
 
 /* BEM Element: hero__scroll-icon */
@@ -156,21 +173,147 @@
 
 /* Entfernte Styles für Circle/Pill bereinigen falls nötig, hier überschrieben */
 
-/* BEM Element: hero__image */
-.hero__image {
-    flex: 0 1 auto;
-    /* Nicht mehr flex: 1 - erlaubt Schrumpfen */
-    width: 50%;
+/* 
+   Hero Glow Effect - Pulsierende Ringe
+*/
+.hero__glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: -1;
+    pointer-events: none;
+
+    /* Fix für Verzerrung auf Mobile: Quadratisches Verhältnis erzwingen */
+    @media (max-width: 900px) {
+        width: 100vw;
+        height: 100vw;
+        /* Verwendet Viewport-Width für beide Achsen -> garantiert rund */
+        max-width: 500px;
+        /* Optionaler Deckel */
+        max-height: 500px;
+    }
+}
+
+.hero__ring {
+    position: absolute;
+    border-radius: 50%;
+    border-style: dotted;
+    border-color: var(--color-primary);
+    opacity: 0;
+    animation: ring-pulse 4s ease-out infinite;
+}
+
+/* Gemeinsame Animation für alle Ringe */
+.hero__ring {
+    position: absolute;
+    /* Alle Ringe starten mit der Größe des Bild-Containers */
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-style: dotted;
+    border-color: var(--color-primary);
+    opacity: 0;
+    /* Deutlich langsamer für geschmeidigen Look */
+    animation: ring-wave 16s linear infinite;
+    /* Liquid Glass Effekt durch leichten Blur */
+    filter: blur(0.6px);
+    will-change: transform, opacity;
+}
+
+/* 
+   Optimierte Delays für 16s Gesamtdauer bei 8 Wellen:
+   Intervall von 2s sorgt für gleichmäßige Abstände.
+*/
+
+.hero__ring--1 {
+    animation-delay: 0s;
+}
+
+.hero__ring--2 {
+    animation-delay: 2s;
+}
+
+.hero__ring--3 {
+    animation-delay: 4s;
+}
+
+.hero__ring--4 {
+    animation-delay: 6s;
+}
+
+.hero__ring--5 {
+    animation-delay: 8s;
+}
+
+.hero__ring--6 {
+    animation-delay: 10s;
+}
+
+.hero__ring--7 {
+    animation-delay: 12s;
+}
+
+.hero__ring--8 {
+    animation-delay: 14s;
+}
+
+/* 
+   Wave Animation:
+   - "Liquid Glass" durch sanftere Opacity und kleinere Dots
+*/
+@keyframes ring-wave {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+        /* Noch feinere Punkte am Start */
+        border-width: 6px;
+    }
+
+    10% {
+        opacity: 0.15;
+        /* Noch dezenter */
+    }
+
+    50% {
+        opacity: 0.08;
+        border-width: 1.5px;
+    }
+
+    100% {
+        transform: scale(5);
+        /* Etwas weiter für Immersion */
+        opacity: 0;
+        /* Fast unsichtbar am Ende */
+        border-width: 0.1px;
+    }
+}
+
+/* BEM Element: hero__image */
+.hero__image {
+    flex: 1 1 50%;
+    /* 50/50 Split */
+    width: 50%;
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Für absolute Positionierung des Glows */
 
     @media (max-width: 900px) {
         order: -1;
+        flex: 1 1 auto;
         width: 100%;
+        max-width: 100%;
         /* Begrenzte Höhe auf Mobile damit Scroll-Trigger sichtbar bleibt */
         max-height: clamp(180px, 35vh, 350px);
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -182,7 +325,11 @@
     /* Fluid max-height: min 180px, preferred 40vh, max 600px */
     max-height: clamp(180px, 40vh, 600px);
     filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+    position: relative;
+    z-index: 2;
 }
+
+
 
 /* Bounce Animation für Pfeil */
 @keyframes bounce {

@@ -63,13 +63,15 @@ export class SubNavigationComponent implements AfterViewInit {
 
     /** Aktualisiert die Sichtbarkeit der Sub-Navigation */
     private checkVisibility(): void {
-        const toolsSection = document.getElementById('tools');
+        // Wir tracken die gesamte Sektion, nicht nur die H2-Überschrift
+        const toolsSection = document.getElementById('tools-section');
 
         if (toolsSection) {
             const rect = toolsSection.getBoundingClientRect();
             const navHeight = 60; // Höhe der Hauptnavigation
 
-            // Sichtbar wenn Tools-Sektion im Viewport ist
+            // Sichtbar wenn die Tools-Sektion (Container) den oberen Navigationsbereich erreicht
+            // und solange sie noch im Viewport ist.
             const isInView = rect.top <= navHeight + 100 && rect.bottom >= navHeight;
             this.isVisible.set(isInView);
         }
@@ -95,7 +97,14 @@ export class SubNavigationComponent implements AfterViewInit {
 
         const element = document.getElementById(`tool-${toolId}`);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Kombinierter Offset für Tools: Navbar (60) + Sub-Nav (48) + Puffer (32) = 140px
+            const offset = 140;
+            const elementTop = element.getBoundingClientRect().top + window.scrollY;
+
+            window.scrollTo({
+                top: Math.round(elementTop - offset),
+                behavior: 'smooth'
+            });
         }
 
         // Horizontalen Scroll der Sub-Navigation anpassen

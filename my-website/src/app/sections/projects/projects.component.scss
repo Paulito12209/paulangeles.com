@@ -15,7 +15,6 @@
 /* BEM Element: projects__label */
 .projects__label {
     display: block;
-    margin-bottom: 1rem;
 }
 
 /* BEM Element: projects__title */
@@ -82,19 +81,39 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-}
 
-.projects__status-link {
-    display: flex;
-    align-items: center;
-    color: inherit;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
+    /* Beta Styling (Yellow/Orange) */
+    &.projects__status--beta {
+        color: #D97706;
+        /* Amber-600 */
+        /* Background Standard (non-hover) */
+        background: rgba(245, 158, 11, 0.1);
+        border-color: rgba(245, 158, 11, 0.2);
+    }
 
-    &:hover {
-        opacity: 0.7;
+    /* Interactive State for Links */
+    &.projects__status--interactive {
+        text-decoration: none;
+        transition: all 0.2s ease;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 1;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+            /* Standard Hover */
+            background: rgba(145, 30, 33, 0.15);
+
+            /* Beta Hover */
+            &.projects__status--beta {
+                background: rgba(245, 158, 11, 0.2);
+            }
+        }
     }
 }
+
+/* Removed .projects__status-link as it is no longer needed */
 
 .projects__status-icon {
     width: 1.2em;

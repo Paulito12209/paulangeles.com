@@ -40,7 +40,7 @@ export class ProjectsComponent {
             label: 'PROJEKT_02',
             description: 'Ein digitales Notizbuch, das auf dem PARA-System basiert und Wissensmanagement vereinfacht.',
             status: 'In Entwicklung',
-            link: 'https://github.com/Paulito12209/ParaBook',
+
             github: 'https://github.com/Paulito12209/ParaBook'
         },
         {
@@ -48,9 +48,9 @@ export class ProjectsComponent {
             name: 'NotizApp',
             label: 'PROJEKT_03',
             description: 'Eine minimalistische Notiz-Anwendung mit Fokus auf Einfachheit und schnelle Erfassung.',
-            status: 'In Entwicklung',
-            link: '#', // Placeholder to keep icon visible
-            github: '#' // Placeholder for GitHub button
+            status: 'Beta Version',
+            link: 'https://paulangeles.com/projects/notiz-app/',
+            github: 'https://github.com/Paulito12209/Paul-s-Notiz-App'
         }
     ];
 }

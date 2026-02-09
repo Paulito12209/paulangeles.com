@@ -1,9 +1,9 @@
 <!-- Tools Sektion -->
-<section id="tools" class="tools">
+<section id="tools-section" class="tools">
     <!-- Sektion Header -->
     <div class="tools__header">
         <span class="tools__label section-label mono">WERKZEUGE</span>
-        <h2 class="tools__title">
+        <h2 id="tools" class="tools__title">
             Meine <span class="text--glossy">Lieblings-Tools</span>
         </h2>
         <p class="tools__intro">
@@ -16,7 +16,8 @@
     <div class="tools__grid">
         @for (tool of tools; track tool.id) {
         <div [id]="'tool-' + tool.id" class="tools__item">
-            <app-card [title]="tool.name" [label]="tool.label" [showExternalIcon]="true">
+            <app-card [title]="tool.name" [label]="tool.label" [showExternalIcon]="true"
+                [externalLink]="tool.link || ''">
                 <p>{{ tool.description }}</p>
             </app-card>
         </div>

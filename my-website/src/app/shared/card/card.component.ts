@@ -19,4 +19,7 @@ export class CardComponent {
 
     /** Ob das Externe-Link-Icon angezeigt werden soll */
     @Input() showExternalIcon = false;
+
+    /** Optionaler Link für das Icon */
+    @Input() externalLink = '';
 }

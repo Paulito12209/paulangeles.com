@@ -14,11 +14,18 @@ import { MagneticParticlesComponent } from '../../shared/magnetic-particles/magn
 })
 export class HeroComponent {
 
-    /** Scrollt zur nächsten Sektion (About Me) */
+    /** Scrollt zur nächsten Sektion (About Me) mit H2-Alignment */
     scrollToNextSection(): void {
-        const element = document.getElementById('about-me');
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const targetElement = document.getElementById('about-me');
+        if (targetElement) {
+            // Offset: Navbar Höhe (60px) + gewünschter Abstand zur H2 (20px) = 80px
+            const offset = 80;
+            const elementTop = targetElement.getBoundingClientRect().top + window.scrollY;
+
+            window.scrollTo({
+                top: Math.round(elementTop - offset),
+                behavior: 'smooth'
+            });
         }
     }
 }

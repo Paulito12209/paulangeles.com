@@ -96,14 +96,20 @@
     text-decoration: none;
     position: relative;
     transition: color var(--transition-fast);
+}
 
-    /* Unterstreichung für aktiven Link */
+/* BEM Element: nav__link-text */
+.nav__link-text {
+    position: relative;
+    display: inline-block;
+
+    /* Unterstreichung für aktiven Link - jetzt nur für den Textbereich */
     &::after {
         content: '';
         position: absolute;
-        bottom: 0.375rem;
-        left: 1rem;
-        right: 1rem;
+        bottom: -0.25rem;
+        left: 0;
+        right: 0;
         height: 2px;
         background: linear-gradient(90deg,
                 var(--color-primary) 0%,
@@ -112,17 +118,13 @@
         transform-origin: center;
         transition: transform var(--transition-normal);
     }
-
-    &:hover {
-        color: var(--color-primary);
-    }
 }
 
 /* BEM Modifier: nav__link--active */
 .nav__link--active {
     color: var(--color-primary);
 
-    &::after {
+    .nav__link-text::after {
         transform: scaleX(1);
     }
 }
@@ -146,7 +148,7 @@
 
     .nav__link {
         padding: 0.5rem 0.5rem;
-        font-size: 0.75rem;
-        /* 12px auf Mobile */
+        font-size: 0.625rem;
+        /* 10px auf Mobile */
     }
 }

@@ -13,7 +13,7 @@
             <li class="nav__item">
                 <a class="nav__link" [class.nav__link--active]="activeSection() === link.id" routerLink="/"
                     [fragment]="link.id" (click)="scrollToSection($event, link.anchor)">
-                    {{ link.label }}
+                    <span class="nav__link-text">{{ link.label }}</span>
                 </a>
             </li>
             }

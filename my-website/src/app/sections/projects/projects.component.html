@@ -1,9 +1,9 @@
 <!-- Projects Sektion -->
-<section id="projects" class="projects">
+<section class="projects">
     <!-- Sektion Header -->
     <div class="projects__header">
         <span class="projects__label section-label mono">PROJEKTE</span>
-        <h2 class="projects__title">
+        <h2 id="projects" class="projects__title">
             Aktuelle <span class="text--glossy">Projekte</span>
         </h2>
 
@@ -23,19 +23,22 @@
             <app-card [title]="project.name" [label]="project.label">
                 <p>{{ project.description }}</p>
                 <div class="projects__card-footer">
-                    <span class="projects__status">
+                    @if (project.link) {
+                    <a [href]="project.link" target="_blank" rel="noopener noreferrer"
+                        class="projects__status projects__status--interactive"
+                        [class.projects__status--beta]="project.status === 'Beta Version'" aria-label="Projekt ansehen">
                         {{ project.status }}
-                        @if (project.link) {
-                        <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="projects__status-link"
-                            aria-label="Projekt ansehen">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="projects__status-icon">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                            </svg>
-                        </a>
-                        }
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="projects__status-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                    </a>
+                    } @else {
+                    <span class="projects__status" [class.projects__status--beta]="project.status === 'Beta Version'">
+                        {{ project.status }}
                     </span>
+                    }
 
                     <div class="projects__actions">
                         @if (project.github) {
