@@ -7,16 +7,79 @@
             <img src="pa-logo.png" alt="PA Logo" class="nav__logo-img">
         </a>
 
-        <!-- Navigation Links (rechts) -->
+        <!-- Aktuelle Sektion (nur Mobile) -->
+        <span class="nav__current-section" (click)="scrollToSection($event, '#' + activeSection())">
+            {{ activeSectionLabelKey() | translate }}
+        </span>
+
+        <!-- Desktop Navigation Links -->
         <ul class="nav__list">
             @for (link of navLinks; track link.id) {
             <li class="nav__item">
                 <a class="nav__link" [class.nav__link--active]="activeSection() === link.id" routerLink="/"
                     [fragment]="link.id" (click)="scrollToSection($event, link.anchor)">
-                    <span class="nav__link-text">{{ link.label }}</span>
+                    <span class="nav__link-text">{{ link.labelKey | translate }}</span>
                 </a>
             </li>
             }
+
+            <!-- Desktop Sprachwechsel -->
+            <li class="nav__item nav__item--lang">
+                <div class="nav__lang">
+                    <button class="nav__lang-btn" [class.nav__lang-btn--active]="currentLang() === 'de'"
+                        (click)="setLanguage('de')">DE</button>
+                    <span class="nav__lang-sep">|</span>
+                    <button class="nav__lang-btn" [class.nav__lang-btn--active]="currentLang() === 'en'"
+                        (click)="setLanguage('en')">EN</button>
+                    <span class="nav__lang-sep">|</span>
+                    <button class="nav__lang-btn" [class.nav__lang-btn--active]="currentLang() === 'es'"
+                        (click)="setLanguage('es')">ES</button>
+                </div>
+            </li>
         </ul>
+
+        <!-- Burger-Button (nur Mobile) -->
+        <button class="nav__burger" [class.nav__burger--open]="isMenuOpen()" (click)="toggleMenu()"
+            aria-label="Menü öffnen">
+            <span class="nav__burger-line"></span>
+            <span class="nav__burger-line"></span>
+            <span class="nav__burger-line"></span>
+        </button>
     </nav>
 </header>
+
+<!-- Fullscreen Overlay Menu -->
+<div class="nav-overlay" [class.nav-overlay--open]="isMenuOpen()">
+    <!-- Close Button -->
+    <button class="nav-overlay__close" (click)="closeMenu()" aria-label="Menü schließen">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor" width="28" height="28">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+    </button>
+
+    <!-- Overlay Navigation Links -->
+    <ul class="nav-overlay__list">
+        @for (link of navLinks; track link.id) {
+        @if (link.id !== 'hero') {
+        <li class="nav-overlay__item">
+            <a class="nav-overlay__link" (click)="scrollToSection($event, link.anchor)">
+                {{ link.labelKey | translate }}
+            </a>
+        </li>
+        }
+        }
+    </ul>
+
+    <!-- Sprachwechsel -->
+    <div class="nav-overlay__lang">
+        <button class="nav-overlay__lang-btn" [class.nav-overlay__lang-btn--active]="currentLang() === 'de'"
+            (click)="setLanguage('de')">DE</button>
+        <span class="nav-overlay__lang-sep">|</span>
+        <button class="nav-overlay__lang-btn" [class.nav-overlay__lang-btn--active]="currentLang() === 'en'"
+            (click)="setLanguage('en')">EN</button>
+        <span class="nav-overlay__lang-sep">|</span>
+        <button class="nav-overlay__lang-btn" [class.nav-overlay__lang-btn--active]="currentLang() === 'es'"
+            (click)="setLanguage('es')">ES</button>
+    </div>
+</div>

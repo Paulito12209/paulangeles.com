@@ -4,11 +4,12 @@
  */
 import { Component } from '@angular/core';
 import { MagneticParticlesComponent } from '../../shared/magnetic-particles/magnetic-particles.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-hero',
     standalone: true,
-    imports: [MagneticParticlesComponent],
+    imports: [MagneticParticlesComponent, TranslatePipe],
     templateUrl: './hero.component.html',
     styleUrl: './hero.component.scss'
 })

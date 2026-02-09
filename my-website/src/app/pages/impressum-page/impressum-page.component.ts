@@ -2,29 +2,28 @@
  * Impressum Page Component
  * Separate page for legal information
  */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-impressum-page',
     standalone: true,
-    imports: [RouterLink],
+    imports: [RouterLink, TranslatePipe],
     template: `
     <div class="impressum-page">
         <div class="impressum-page__container">
-            <!-- Back Link -->
+            <!-- Back Link (oben) -->
             <a routerLink="/" class="impressum-page__back">
-                ← Zurück zur Startseite
+                {{ 'impressum.back' | translate }}
             </a>
 
-            <!-- Content -->
-            <!-- Label entfernt -->
-            <h1 class="impressum-page__title">Impressum</h1>
+            <h1 class="impressum-page__title">{{ 'impressum.title' | translate }}</h1>
 
             <div class="impressum-page__content">
                 <!-- Angaben gemäß § 5 TMG -->
                 <div class="impressum-page__block">
-                    <h2 class="impressum-page__heading">Angaben gemäß § 5 TMG</h2>
+                    <h2 class="impressum-page__heading">{{ 'impressum.tmgTitle' | translate }}</h2>
                     <address class="impressum-page__address">
                         <strong>Paul Angeles Chaquire</strong><br>
                         c/o Online-Impressum.de #5610<br>
@@ -35,13 +34,18 @@ import { RouterLink } from '@angular/router';
 
                 <!-- Kontakt -->
                 <div class="impressum-page__block">
-                    <h2 class="impressum-page__heading">Kontakt</h2>
+                    <h2 class="impressum-page__heading">{{ 'impressum.contactTitle' | translate }}</h2>
                     <p>
                         E-Mail: <a href="mailto:kontakt@paulangeles.com">kontakt&#64;paulangeles.com</a><br>
                         Telefon: +49 (0)162 6526358
                     </p>
                 </div>
             </div>
+
+            <!-- Back Link (unten) -->
+            <a routerLink="/" class="impressum-page__back impressum-page__back--bottom">
+                {{ 'impressum.back' | translate }}
+            </a>
         </div>
     </div>
     `,
@@ -70,10 +74,9 @@ import { RouterLink } from '@angular/router';
             }
         }
 
-        .impressum-page__label {
-            display: block;
-            margin-bottom: 1rem;
-            color: var(--color-muted);
+        .impressum-page__back--bottom {
+            margin-top: 3rem;
+            margin-bottom: 0;
         }
 
         .impressum-page__title {
@@ -102,4 +105,8 @@ import { RouterLink } from '@angular/router';
         }
     `]
 })
-export class ImpressumPageComponent { }
+export class ImpressumPageComponent implements OnInit {
+    ngOnInit(): void {
+        window.scrollTo({ top: 0 });
+    }
+}

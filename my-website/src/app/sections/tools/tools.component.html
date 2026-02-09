@@ -2,13 +2,12 @@
 <section id="tools-section" class="tools">
     <!-- Sektion Header -->
     <div class="tools__header">
-        <span class="tools__label section-label mono">WERKZEUGE</span>
+        <span class="tools__label section-label mono">{{ 'tools.label' | translate }}</span>
         <h2 id="tools" class="tools__title">
-            Meine <span class="text--glossy">Lieblings-Tools</span>
+            {{ 'tools.titleStart' | translate }} <span class="text--glossy">{{ 'tools.titleHighlight' | translate }}</span>
         </h2>
         <p class="tools__intro">
-            Diese Tools begleiten mich täglich und helfen mir, produktiver zu arbeiten
-            und kreative Ideen umzusetzen.
+            {{ 'tools.intro' | translate }}
         </p>
     </div>
 
@@ -18,7 +17,7 @@
         <div [id]="'tool-' + tool.id" class="tools__item">
             <app-card [title]="tool.name" [label]="tool.label" [showExternalIcon]="true"
                 [externalLink]="tool.link || ''">
-                <p>{{ tool.description }}</p>
+                <p>{{ 'tools.desc.' + tool.id | translate }}</p>
             </app-card>
         </div>
         }

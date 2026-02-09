@@ -1,25 +1,21 @@
 <!-- About Me Sektion -->
 <section class="about-me">
     <!-- Technisches Label -->
-    <span class="about-me__label mono section-label">ÜBER_MICH</span>
+    <span class="about-me__label mono section-label">{{ 'aboutMe.label' | translate }}</span>
 
     <!-- Überschrift -->
     <h2 id="about-me" class="about-me__title">
-        Ein kreativer <span class="text--glossy">Freigeist</span>
+        {{ 'aboutMe.titleStart' | translate }} <span class="text--glossy">{{ 'aboutMe.titleHighlight' | translate }}</span>
     </h2>
 
     <!-- Beschreibung -->
     <div class="about-me__content">
         <p class="about-me__text">
-            Ich bin ein kreativer Freigeist mit vielen Ideen, der seine Umgebung optimiert und Familie sowie Freunde mit
-            technischem Wissen unterstützt. Manche würden sagen, dass ich ihnen damit auf den Sack gehe, aber ich möchte
-            bloß nur aus allen das Beste herausholen.⁠
+            {{ 'aboutMe.text1' | translate }}
         </p>
 
         <p class="about-me__text">
-            Meine Leidenschaft liegt darin, komplexe Prozesse zu vereinfachen und
-            mit den richtigen Tools produktiver zu arbeiten. Diese Website zeigt
-            einen kleinen Einblick in meine Arbeitsweise.
+            {{ 'aboutMe.text2' | translate }}
         </p>
     </div>
 </section>

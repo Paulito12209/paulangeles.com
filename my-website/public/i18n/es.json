@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "start": "Inicio",
+    "aboutMe": "Sobre mí",
+    "tools": "Herramientas",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "label": "PRESENTACIÓN",
+    "greeting": "Hola, soy",
+    "name": "Paul",
+    "description": "Esta página web es una demo rudimentaria que programé por ahora, ya que todavía estoy desarrollando mi propio sistema de diseño. Sin embargo, tomará un poco más de tiempo hasta su finalización.",
+    "scrollDown": "Desplázate hacia abajo"
+  },
+  "aboutMe": {
+    "label": "SOBRE_MÍ",
+    "titleStart": "Un",
+    "titleHighlight": "Espíritu Libre",
+    "text1": "Soy un espíritu libre creativo con muchas ideas, que optimiza su entorno y apoya a familiares y amigos con conocimientos técnicos. Algunos dirían que los molesto con eso, pero solo quiero sacar lo mejor de todos.",
+    "text2": "Mi pasión radica en simplificar procesos complejos y trabajar de manera más productiva con las herramientas adecuadas. Esta página web muestra una pequeña vista de mi forma de trabajar."
+  },
+  "tools": {
+    "label": "HERRAMIENTAS",
+    "titleStart": "Mis",
+    "titleHighlight": "Herramientas Favoritas",
+    "intro": "Estas herramientas me acompañan a diario y me ayudan a trabajar de manera más productiva y a realizar ideas creativas.",
+    "desc": {
+      "raycast": "Un potente lanzador para macOS que aumenta mi productividad con comandos rápidos, snippets y extensiones.",
+      "dia": "Un navegador moderno con funciones de IA que me ayuda a trabajar e investigar de manera más eficiente en la web.",
+      "notion": "Mi herramienta central para notas, proyectos y gestión del conocimiento. Todo organizado en un solo lugar.",
+      "antigravity": "Un asistente de programación impulsado por IA que me ayuda en el desarrollo de proyectos y acelera mi flujo de trabajo.",
+      "claude-ai": "Un asistente avanzado de IA de Anthropic que me apoya en la investigación, la redacción y preguntas complejas.",
+      "figma": "Mi herramienta de diseño preferida para trabajo UI/UX, prototipado y diseño colaborativo.",
+      "canva": "Perfecto para gráficos rápidos, publicaciones en redes sociales y presentaciones con aspecto profesional.",
+      "notebooklm": "Un cuaderno impulsado por IA de Google que me ayuda a comprender y analizar documentos complejos."
+    }
+  },
+  "projects": {
+    "label": "PROYECTOS",
+    "titleStart": "Proyectos",
+    "titleHighlight": "Actuales",
+    "notice": "Estas aplicaciones web están actualmente en desarrollo, pero se mejoran continuamente con actualizaciones y nuevas funcionalidades.",
+    "desc": {
+      "xool": "Una aplicación web innovadora que simplifica los procesos de aprendizaje y permite el aprendizaje personalizado.",
+      "parabook": "Un cuaderno digital basado en el sistema PARA que simplifica la gestión del conocimiento.",
+      "notizapp": "Una aplicación de notas minimalista con enfoque en la simplicidad y captura rápida."
+    },
+    "status": {
+      "inDevelopment": "En Desarrollo",
+      "betaVersion": "Versión Beta"
+    }
+  },
+  "contact": {
+    "label": "CONTACTO",
+    "titleStart": "Vamos a",
+    "titleHighlight": "conectar",
+    "intro": "¿Tienes preguntas, ideas o simplemente quieres saludar? ¡Me encantaría saber de ti!"
+  },
+  "footer": {
+    "impressum": "Aviso Legal",
+    "allRights": "Todos los derechos reservados."
+  },
+  "impressum": {
+    "back": "← Volver a la página principal",
+    "title": "Aviso Legal",
+    "label": "AVISO_LEGAL",
+    "tmgTitle": "Información según § 5 TMG",
+    "contactTitle": "Contacto"
+  }
+}

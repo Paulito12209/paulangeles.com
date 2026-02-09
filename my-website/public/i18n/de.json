@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "start": "Start",
+    "aboutMe": "Über mich",
+    "tools": "Tools",
+    "projects": "Projekte",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "label": "VORSTELLUNG",
+    "greeting": "Hi, ich bin",
+    "name": "Paul",
+    "description": "Diese Website ist eine rudimentäre Demo, die ich vorerst gecodet habe, da ich mein eigenes Design System noch entwickle. Das wird jedoch noch etwas Zeit in Anspruch nehmen bis zur Fertigstellung.",
+    "scrollDown": "Scroll nach unten"
+  },
+  "aboutMe": {
+    "label": "ÜBER_MICH",
+    "titleStart": "Ein kreativer",
+    "titleHighlight": "Freigeist",
+    "text1": "Ich bin ein kreativer Freigeist mit vielen Ideen, der seine Umgebung optimiert und Familie sowie Freunde mit technischem Wissen unterstützt. Manche würden sagen, dass ich ihnen damit auf den Sack gehe, aber ich möchte bloß nur aus allen das Beste herausholen.\u2060",
+    "text2": "Meine Leidenschaft liegt darin, komplexe Prozesse zu vereinfachen und mit den richtigen Tools produktiver zu arbeiten. Diese Website zeigt einen kleinen Einblick in meine Arbeitsweise."
+  },
+  "tools": {
+    "label": "WERKZEUGE",
+    "titleStart": "Meine",
+    "titleHighlight": "Lieblings-Tools",
+    "intro": "Diese Tools begleiten mich täglich und helfen mir, produktiver zu arbeiten und kreative Ideen umzusetzen.",
+    "desc": {
+      "raycast": "Ein leistungsstarker Launcher für macOS, der meine Produktivität mit schnellen Befehlen, Snippets und Erweiterungen steigert.",
+      "dia": "Ein moderner Browser mit KI-Funktionen, der mir hilft, effizienter im Web zu arbeiten und zu recherchieren.",
+      "notion": "Mein zentrales Tool für Notizen, Projekte und Wissensmanagement. Alles an einem Ort organisiert.",
+      "antigravity": "Ein KI-gestützter Coding-Assistent, der mir bei der Entwicklung von Projekten hilft und meinen Workflow beschleunigt.",
+      "claude-ai": "Ein fortschrittlicher KI-Assistent von Anthropic, der mir bei Recherche, Texten und komplexen Fragen zur Seite steht.",
+      "figma": "Das Design-Tool meiner Wahl für UI/UX-Arbeit, Prototyping und kollaboratives Design.",
+      "canva": "Perfekt für schnelle Grafiken, Social-Media-Posts und Präsentationen mit professionellem Look.",
+      "notebooklm": "Ein KI-gestütztes Notizbuch von Google, das mir hilft, komplexe Dokumente zu verstehen und zu analysieren."
+    }
+  },
+  "projects": {
+    "label": "PROJEKTE",
+    "titleStart": "Aktuelle",
+    "titleHighlight": "Projekte",
+    "notice": "Diese Web-Apps sind derzeit noch in Arbeit, werden aber kontinuierlich mit Updates und neuen Features weiterentwickelt.",
+    "desc": {
+      "xool": "Eine innovative Web-App, die Lernprozesse vereinfacht und personalisiertes Lernen ermöglicht.",
+      "parabook": "Ein digitales Notizbuch, das auf dem PARA-System basiert und Wissensmanagement vereinfacht.",
+      "notizapp": "Eine minimalistische Notiz-Anwendung mit Fokus auf Einfachheit und schnelle Erfassung."
+    },
+    "status": {
+      "inDevelopment": "In Entwicklung",
+      "betaVersion": "Beta Version"
+    }
+  },
+  "contact": {
+    "label": "KONTAKT",
+    "titleStart": "Lass uns",
+    "titleHighlight": "verbinden",
+    "intro": "Du hast Fragen, Ideen oder möchtest einfach Hallo sagen? Ich freue mich, von dir zu hören!"
+  },
+  "footer": {
+    "impressum": "Impressum",
+    "allRights": "Alle Rechte vorbehalten."
+  },
+  "impressum": {
+    "back": "← Zurück zur Startseite",
+    "title": "Impressum",
+    "label": "IMPRESSUM",
+    "tmgTitle": "Angaben gemäß § 5 TMG",
+    "contactTitle": "Kontakt"
+  }
+}

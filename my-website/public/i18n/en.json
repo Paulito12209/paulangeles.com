@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "start": "Home",
+    "aboutMe": "About Me",
+    "tools": "Tools",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "label": "INTRODUCTION",
+    "greeting": "Hi, I'm",
+    "name": "Paul",
+    "description": "This website is a rudimentary demo that I coded for now, as I'm still developing my own design system. However, it will take some more time to complete.",
+    "scrollDown": "Scroll down"
+  },
+  "aboutMe": {
+    "label": "ABOUT_ME",
+    "titleStart": "A creative",
+    "titleHighlight": "Free Spirit",
+    "text1": "I'm a creative free spirit with many ideas who optimizes his environment and supports family and friends with technical knowledge. Some might say I'm annoying them with it, but I just want to bring out the best in everyone.",
+    "text2": "My passion lies in simplifying complex processes and working more productively with the right tools. This website shows a small glimpse into my workflow."
+  },
+  "tools": {
+    "label": "TOOLS",
+    "titleStart": "My Favorite",
+    "titleHighlight": "Tools",
+    "intro": "These tools accompany me daily and help me work more productively and bring creative ideas to life.",
+    "desc": {
+      "raycast": "A powerful launcher for macOS that boosts my productivity with quick commands, snippets, and extensions.",
+      "dia": "A modern browser with AI features that helps me work and research more efficiently on the web.",
+      "notion": "My central tool for notes, projects, and knowledge management. Everything organized in one place.",
+      "antigravity": "An AI-powered coding assistant that helps me develop projects and accelerates my workflow.",
+      "claude-ai": "An advanced AI assistant by Anthropic that supports me with research, writing, and complex questions.",
+      "figma": "My design tool of choice for UI/UX work, prototyping, and collaborative design.",
+      "canva": "Perfect for quick graphics, social media posts, and presentations with a professional look.",
+      "notebooklm": "An AI-powered notebook by Google that helps me understand and analyze complex documents."
+    }
+  },
+  "projects": {
+    "label": "PROJECTS",
+    "titleStart": "Current",
+    "titleHighlight": "Projects",
+    "notice": "These web apps are currently still in development but are continuously being improved with updates and new features.",
+    "desc": {
+      "xool": "An innovative web app that simplifies learning processes and enables personalized learning.",
+      "parabook": "A digital notebook based on the PARA system that simplifies knowledge management.",
+      "notizapp": "A minimalistic note-taking application focused on simplicity and quick capture."
+    },
+    "status": {
+      "inDevelopment": "In Development",
+      "betaVersion": "Beta Version"
+    }
+  },
+  "contact": {
+    "label": "CONTACT",
+    "titleStart": "Let's",
+    "titleHighlight": "connect",
+    "intro": "Have questions, ideas, or just want to say hello? I'd love to hear from you!"
+  },
+  "footer": {
+    "impressum": "Legal Notice",
+    "allRights": "All rights reserved."
+  },
+  "impressum": {
+    "back": "← Back to homepage",
+    "title": "Legal Notice",
+    "label": "LEGAL_NOTICE",
+    "tmgTitle": "Information according to § 5 TMG",
+    "contactTitle": "Contact"
+  }
+}

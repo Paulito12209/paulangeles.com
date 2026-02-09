@@ -2,17 +2,14 @@
 <section class="projects">
     <!-- Sektion Header -->
     <div class="projects__header">
-        <span class="projects__label section-label mono">PROJEKTE</span>
+        <span class="projects__label section-label mono">{{ 'projects.label' | translate }}</span>
         <h2 id="projects" class="projects__title">
-            Aktuelle <span class="text--glossy">Projekte</span>
+            {{ 'projects.titleStart' | translate }} <span class="text--glossy">{{ 'projects.titleHighlight' | translate }}</span>
         </h2>
 
         <!-- Status-Hinweis -->
         <div class="projects__notice">
-            <p>
-                Diese Web-Apps sind derzeit noch in Arbeit, werden aber kontinuierlich
-                mit Updates und neuen Features weiterentwickelt.
-            </p>
+            <p>{{ 'projects.notice' | translate }}</p>
         </div>
     </div>
 
@@ -21,13 +18,13 @@
         @for (project of projects; track project.id) {
         <div [id]="'project-' + project.id" class="projects__item">
             <app-card [title]="project.name" [label]="project.label">
-                <p>{{ project.description }}</p>
+                <p>{{ 'projects.desc.' + project.id | translate }}</p>
                 <div class="projects__card-footer">
                     @if (project.link) {
                     <a [href]="project.link" target="_blank" rel="noopener noreferrer"
                         class="projects__status projects__status--interactive"
-                        [class.projects__status--beta]="project.status === 'Beta Version'" aria-label="Projekt ansehen">
-                        {{ project.status }}
+                        [class.projects__status--beta]="project.statusKey === 'betaVersion'" aria-label="Projekt ansehen">
+                        {{ 'projects.status.' + project.statusKey | translate }}
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="projects__status-icon">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -35,8 +32,8 @@
                         </svg>
                     </a>
                     } @else {
-                    <span class="projects__status" [class.projects__status--beta]="project.status === 'Beta Version'">
-                        {{ project.status }}
+                    <span class="projects__status" [class.projects__status--beta]="project.statusKey === 'betaVersion'">
+                        {{ 'projects.status.' + project.statusKey | translate }}
                     </span>
                     }
 

@@ -1,6 +1,6 @@
-/* 
+/*
   Navigation Stile
-  Sticky Navigationsleiste mit Logo und aktivem Abschnitts-Highlighting
+  Sticky Navigationsleiste mit Logo, Burger-Menu und Sprachwechsel
 */
 
 /* BEM Block: nav */
@@ -44,24 +44,11 @@
     text-decoration: none;
     padding: 0.5rem;
     transition: transform var(--transition-fast);
+    flex-shrink: 0;
 
     &:hover {
         transform: scale(1.05);
     }
-}
-
-/* BEM Element: nav__logo-text */
-.nav__logo-text {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-text);
-    background: linear-gradient(135deg,
-            var(--color-primary) 0%,
-            var(--color-primary-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 /* BEM Element: nav__logo-img */
@@ -71,7 +58,24 @@
     object-fit: contain;
 }
 
-/* BEM Element: nav__list */
+/* BEM Element: nav__current-section (nur Mobile sichtbar) */
+.nav__current-section {
+    display: none;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 40vw;
+    text-align: center;
+}
+
+/* BEM Element: nav__list (Desktop Navigation) */
 .nav__list {
     display: flex;
     align-items: center;
@@ -84,6 +88,53 @@
 /* BEM Element: nav__item */
 .nav__item {
     margin: 0;
+}
+
+/* BEM Element: nav__item--lang (Desktop Sprachwechsel) */
+.nav__item--lang {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* BEM Element: nav__lang (Desktop Sprachwechsel Container) */
+.nav__lang {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+/* BEM Element: nav__lang-btn */
+.nav__lang-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text);
+    opacity: 0.5;
+    padding: 0.25rem;
+    transition: opacity var(--transition-fast), color var(--transition-fast);
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+/* BEM Modifier: nav__lang-btn--active */
+.nav__lang-btn--active {
+    opacity: 1;
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* BEM Element: nav__lang-sep */
+.nav__lang-sep {
+    font-size: 0.75rem;
+    color: var(--color-text);
+    opacity: 0.3;
 }
 
 /* BEM Element: nav__link */
@@ -103,7 +154,6 @@
     position: relative;
     display: inline-block;
 
-    /* Unterstreichung für aktiven Link - jetzt nur für den Textbereich */
     &::after {
         content: '';
         position: absolute;
@@ -129,7 +179,161 @@
     }
 }
 
-/* Responsive: Kleinere Bildschirme */
+/* ================================================
+   Burger Button (nur Mobile)
+   ================================================ */
+.nav__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
+.nav__burger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 1px;
+    transition: transform var(--transition-normal), opacity var(--transition-normal);
+}
+
+/* Burger -> X Animation */
+.nav__burger--open {
+    .nav__burger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav__burger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav__burger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+}
+
+/* ================================================
+   Fullscreen Overlay Menu
+   ================================================ */
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+}
+
+.nav-overlay--open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Close Button */
+.nav-overlay__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+    padding: 0.5rem;
+    transition: color var(--transition-fast);
+
+    &:hover {
+        color: var(--color-primary);
+    }
+}
+
+/* Overlay Link-Liste */
+.nav-overlay__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-overlay__item {
+    margin: 0;
+}
+
+.nav-overlay__link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+
+    &:hover {
+        color: var(--color-primary);
+    }
+}
+
+/* Overlay Sprachwechsel */
+.nav-overlay__lang {
+    position: absolute;
+    bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-overlay__lang-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    opacity: 0.5;
+    padding: 0.25rem 0.5rem;
+    transition: opacity var(--transition-fast), color var(--transition-fast);
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.nav-overlay__lang-btn--active {
+    opacity: 1;
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.nav-overlay__lang-sep {
+    font-size: 1rem;
+    color: var(--color-text);
+    opacity: 0.3;
+}
+
+/* ================================================
+   Responsive
+   ================================================ */
 @media (max-width: 1200px) {
     .nav__container {
         padding: 0 80px;
@@ -141,14 +345,18 @@
         padding: 0 24px;
     }
 
+    /* Desktop Nav-Links ausblenden */
     .nav__list {
-        gap: 0;
-        flex-wrap: wrap;
+        display: none;
     }
 
-    .nav__link {
-        padding: 0.5rem 0.5rem;
-        font-size: 0.625rem;
-        /* 10px auf Mobile */
+    /* Mobile: Aktuelle Sektion anzeigen */
+    .nav__current-section {
+        display: block;
+    }
+
+    /* Mobile: Burger anzeigen */
+    .nav__burger {
+        display: flex;
     }
 }

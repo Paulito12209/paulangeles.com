@@ -11,6 +11,7 @@ import {
     AfterViewInit
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 /** Interface für Tool-Links */
 interface ToolLink {
@@ -21,7 +22,7 @@ interface ToolLink {
 @Component({
     selector: 'app-sub-navigation',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, TranslatePipe],
     templateUrl: './sub-navigation.component.html',
     styleUrl: './sub-navigation.component.scss'
 })

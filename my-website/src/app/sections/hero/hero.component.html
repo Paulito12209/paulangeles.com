@@ -7,19 +7,17 @@
         <!-- Linke Seite: Text Content -->
         <div class="hero__content">
             <!-- Technisches Label -->
-            <span class="hero__label mono">VORSTELLUNG</span>
+            <span class="hero__label mono">{{ 'hero.label' | translate }}</span>
 
             <!-- Hauptüberschrift -->
             <h1 class="hero__title">
-                Hi, ich bin
-                <span class="text--glossy">Paul</span>
+                {{ 'hero.greeting' | translate }}
+                <span class="text--glossy">{{ 'hero.name' | translate }}</span>
             </h1>
 
             <!-- Beschreibung -->
             <p class="hero__description">
-                Diese Website ist eine rudimentäre Demo, die ich vorerst gecodet habe, da ich mein
-                eigenes Design System noch entwickle. Das wird jedoch noch etwas Zeit in
-                Anspruch nehmen bis zur Fertigstellung.
+                {{ 'hero.description' | translate }}
             </p>
         </div>
 
@@ -42,7 +40,7 @@
 
     <!-- Scroll-Hinweis (Zentriert unter beiden Spalten) -->
     <button class="hero__scroll-trigger" (click)="scrollToNextSection()">
-        <span class="hero__scroll-text">Scroll nach unten</span>
+        <span class="hero__scroll-text">{{ 'hero.scrollDown' | translate }}</span>
         <!-- Double Chevron SVG -->
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="hero__scroll-icon">

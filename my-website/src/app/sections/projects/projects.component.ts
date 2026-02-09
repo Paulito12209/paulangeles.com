@@ -4,14 +4,14 @@
  */
 import { Component } from '@angular/core';
 import { CardComponent } from '../../shared/card/card.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 /** Interface für Projekt-Daten */
 interface Project {
     id: string;
     name: string;
     label: string;
-    description: string;
-    status: string;
+    statusKey: string;
     link?: string;
     github?: string;
 }
@@ -19,7 +19,7 @@ interface Project {
 @Component({
     selector: 'app-projects',
     standalone: true,
-    imports: [CardComponent],
+    imports: [CardComponent, TranslatePipe],
     templateUrl: './projects.component.html',
     styleUrl: './projects.component.scss'
 })
@@ -30,25 +30,20 @@ export class ProjectsComponent {
             id: 'xool',
             name: 'Xool',
             label: 'PROJEKT_01',
-            description: 'Eine innovative Web-App, die Lernprozesse vereinfacht und personalisiertes Lernen ermöglicht.',
-            status: 'In Entwicklung'
-            // No link or github for Xool (Private)
+            statusKey: 'inDevelopment'
         },
         {
             id: 'parabook',
             name: 'ParaBook',
             label: 'PROJEKT_02',
-            description: 'Ein digitales Notizbuch, das auf dem PARA-System basiert und Wissensmanagement vereinfacht.',
-            status: 'In Entwicklung',
-
+            statusKey: 'inDevelopment',
             github: 'https://github.com/Paulito12209/ParaBook'
         },
         {
             id: 'notizapp',
             name: 'NotizApp',
             label: 'PROJEKT_03',
-            description: 'Eine minimalistische Notiz-Anwendung mit Fokus auf Einfachheit und schnelle Erfassung.',
-            status: 'Beta Version',
+            statusKey: 'betaVersion',
             link: 'https://paulangeles.com/projects/notiz-app/',
             github: 'https://github.com/Paulito12209/Paul-s-Notiz-App'
         }
