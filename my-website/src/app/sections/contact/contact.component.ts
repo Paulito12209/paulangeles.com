@@ -12,4 +12,17 @@ import { TranslatePipe } from '@ngx-translate/core';
     templateUrl: './contact.component.html',
     styleUrl: './contact.component.scss'
 })
-export class ContactComponent { }
+export class ContactComponent {
+    /** Scrollt zur Contact Sektion */
+    scrollToSection(): void {
+        const element = document.getElementById('contact');
+        if (element) {
+            const offset = 80;
+            const elementTop = element.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+                top: Math.round(elementTop - offset),
+                behavior: 'smooth'
+            });
+        }
+    }
+}

@@ -11,7 +11,7 @@ import {
     AfterViewInit
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 /** Interface für Tool-Links */
 interface ToolLink {
@@ -22,7 +22,7 @@ interface ToolLink {
 @Component({
     selector: 'app-sub-navigation',
     standalone: true,
-    imports: [CommonModule, TranslatePipe],
+    imports: [CommonModule, TranslateModule],
     templateUrl: './sub-navigation.component.html',
     styleUrl: './sub-navigation.component.scss'
 })
@@ -99,7 +99,7 @@ export class SubNavigationComponent implements AfterViewInit {
         const element = document.getElementById(`tool-${toolId}`);
         if (element) {
             // Kombinierter Offset für Tools: Navbar (60) + Sub-Nav (48) + Puffer (32) = 140px
-            const offset = 140;
+            const offset = 126;
             const elementTop = element.getBoundingClientRect().top + window.scrollY;
 
             window.scrollTo({

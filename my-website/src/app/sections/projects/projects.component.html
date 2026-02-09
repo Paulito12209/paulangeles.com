@@ -2,9 +2,11 @@
 <section class="projects">
     <!-- Sektion Header -->
     <div class="projects__header">
-        <span class="projects__label section-label mono">{{ 'projects.label' | translate }}</span>
+        <span class="projects__label section-label mono" (click)="scrollToSection()" style="cursor: pointer;">{{
+            'projects.label' | translate }}</span>
         <h2 id="projects" class="projects__title">
-            {{ 'projects.titleStart' | translate }} <span class="text--glossy">{{ 'projects.titleHighlight' | translate }}</span>
+            {{ 'projects.titleStart' | translate }} <span class="text--glossy">{{ 'projects.titleHighlight' | translate
+                }}</span>
         </h2>
 
         <!-- Status-Hinweis -->
@@ -23,7 +25,8 @@
                     @if (project.link) {
                     <a [href]="project.link" target="_blank" rel="noopener noreferrer"
                         class="projects__status projects__status--interactive"
-                        [class.projects__status--beta]="project.statusKey === 'betaVersion'" aria-label="Projekt ansehen">
+                        [class.projects__status--beta]="project.statusKey === 'betaVersion'"
+                        aria-label="Projekt ansehen">
                         {{ 'projects.status.' + project.statusKey | translate }}
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="projects__status-icon">

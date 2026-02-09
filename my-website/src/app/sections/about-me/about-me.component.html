@@ -1,11 +1,13 @@
 <!-- About Me Sektion -->
 <section class="about-me">
     <!-- Technisches Label -->
-    <span class="about-me__label mono section-label">{{ 'aboutMe.label' | translate }}</span>
+    <span class="about-me__label mono section-label" (click)="scrollToSection()" style="cursor: pointer;">{{
+        'aboutMe.label' | translate }}</span>
 
     <!-- Überschrift -->
     <h2 id="about-me" class="about-me__title">
-        {{ 'aboutMe.titleStart' | translate }} <span class="text--glossy">{{ 'aboutMe.titleHighlight' | translate }}</span>
+        {{ 'aboutMe.titleStart' | translate }} <span class="text--glossy">{{ 'aboutMe.titleHighlight' | translate
+            }}</span>
     </h2>
 
     <!-- Beschreibung -->

@@ -33,4 +33,17 @@ export class ToolsComponent {
         { id: 'canva', name: 'Canva', label: 'TOOL_07', link: 'https://www.canva.com/templates' },
         { id: 'notebooklm', name: 'NotebookLM', label: 'TOOL_08', link: 'https://notebooklm.google/' }
     ];
+
+    /** Scrollt zur Tools Sektion */
+    scrollToSection(): void {
+        const element = document.getElementById('tools');
+        if (element) {
+            const offset = 140; // Navbar Höhe + SubNav Höhe + Puffer
+            const elementTop = element.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+                top: Math.round(elementTop - offset),
+                behavior: 'smooth'
+            });
+        }
+    }
 }

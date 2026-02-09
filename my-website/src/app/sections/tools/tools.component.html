@@ -2,9 +2,11 @@
 <section id="tools-section" class="tools">
     <!-- Sektion Header -->
     <div class="tools__header">
-        <span class="tools__label section-label mono">{{ 'tools.label' | translate }}</span>
+        <span class="tools__label section-label mono" (click)="scrollToSection()" style="cursor: pointer;">{{
+            'tools.label' | translate }}</span>
         <h2 id="tools" class="tools__title">
-            {{ 'tools.titleStart' | translate }} <span class="text--glossy">{{ 'tools.titleHighlight' | translate }}</span>
+            {{ 'tools.titleStart' | translate }} <span class="text--glossy">{{ 'tools.titleHighlight' | translate
+                }}</span>
         </h2>
         <p class="tools__intro">
             {{ 'tools.intro' | translate }}

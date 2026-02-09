@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
       })
     ),
     provideTranslateService({
-      defaultLanguage: 'de'
+      fallbackLang: 'de'
     }),
     provideTranslateHttpLoader({
       prefix: './i18n/',

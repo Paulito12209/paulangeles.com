@@ -48,4 +48,17 @@ export class ProjectsComponent {
             github: 'https://github.com/Paulito12209/Paul-s-Notiz-App'
         }
     ];
+
+    /** Scrollt zur Projects Sektion */
+    scrollToSection(): void {
+        const element = document.getElementById('projects');
+        if (element) {
+            const offset = 80;
+            const elementTop = element.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+                top: Math.round(elementTop - offset),
+                behavior: 'smooth'
+            });
+        }
+    }
 }

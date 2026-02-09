@@ -17,6 +17,8 @@
 /* BEM Element: tools__label */
 .tools__label {
     display: block;
+    position: relative;
+    z-index: 1;
 }
 
 /* BEM Element: tools__title */

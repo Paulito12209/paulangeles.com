@@ -30,4 +30,13 @@ export class FooterComponent {
         }
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    /** Scrollt nach oben, wenn man bereits auf der Impressum-Seite ist */
+    scrollToImpressumTop(event: Event): void {
+        const url = this.router.url.split('#')[0].split('?')[0];
+        if (url === '/impressum') {
+            event.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
 }

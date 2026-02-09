@@ -11,7 +11,7 @@
 
             <!-- Footer Links -->
             <div class="footer__links">
-                <a routerLink="/impressum" class="footer__link">
+                <a routerLink="/impressum" class="footer__link" (click)="scrollToImpressumTop($event)">
                     {{ 'footer.impressum' | translate }}
                 </a>
                 <a href="mailto:kontakt@paulangeles.com" class="footer__link">
