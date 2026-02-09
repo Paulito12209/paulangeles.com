@@ -8,7 +8,6 @@ import { RouterOutlet } from '@angular/router';
 // Shared Komponenten
 import { DotGridComponent } from './shared/dot-grid/dot-grid.component';
 import { NavigationComponent } from './shared/navigation/navigation.component';
-import { ScrollTimelineComponent } from './shared/scroll-timeline/scroll-timeline.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 @Component({
@@ -20,7 +19,6 @@ import { FooterComponent } from './shared/footer/footer.component';
     // Shared
     DotGridComponent,
     NavigationComponent,
-    ScrollTimelineComponent, // Timeline remains global? Yes, but might need logic update
     FooterComponent
   ],
   templateUrl: './app.html',
