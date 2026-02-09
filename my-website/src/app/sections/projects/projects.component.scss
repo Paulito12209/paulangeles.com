@@ -68,13 +68,44 @@
 /* BEM Element: projects__status */
 .projects__status {
     display: inline-block;
-    margin-top: 1rem;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.6875rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--color-primary);
     background: rgba(145, 30, 33, 0.1);
     border: 1px solid rgba(145, 30, 33, 0.2);
+    border-radius: 2px;
+}
+
+/* BEM Element: projects__card-footer */
+.projects__card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    /* Drückt den Footer nach unten */
+    padding-top: 1rem;
+}
+
+/* BEM Element: projects__link */
+.projects__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    opacity: 0.6;
+    transition: all var(--transition-fast);
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    &:hover {
+        opacity: 1;
+        color: var(--color-primary);
+        transform: scale(1.1);
+    }
 }

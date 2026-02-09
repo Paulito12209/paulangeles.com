@@ -4,13 +4,14 @@
         <!-- Oberer Bereich: Logo und Links -->
         <div class="footer__top">
             <!-- Logo -->
-            <a href="#hero" class="footer__logo" (click)="scrollToTop($event)" aria-label="Zurück zum Anfang">
+            <a routerLink="/" fragment="hero" class="footer__logo" (click)="scrollToTop($event)"
+                aria-label="Zurück zum Anfang">
                 <img src="pa-logo.png" alt="PA Logo" class="footer__logo-img">
             </a>
 
             <!-- Footer Links -->
             <div class="footer__links">
-                <a href="#impressum" class="footer__link" (click)="scrollToImpressum($event)">
+                <a routerLink="/impressum" class="footer__link">
                     Impressum
                 </a>
                 <a href="mailto:kontakt@paulangeles.com" class="footer__link">

@@ -36,29 +36,38 @@ export class ScrollTimelineComponent implements OnInit, AfterViewInit, OnDestroy
         { sectionId: 'about-me', label: 'Über mich', isPast: false },
         { sectionId: 'tools', label: 'Tools', isPast: false },
         { sectionId: 'projects', label: 'Projekte', isPast: false },
-        { sectionId: 'contact', label: 'Kontakt', isPast: false },
-        { sectionId: 'impressum', label: 'Impressum', isPast: false }
+        { sectionId: 'contact', label: 'Kontakt', isPast: false }
     ]);
 
     /** Aktiver Sektions-Index */
     activeIndex = signal<number>(0);
 
+    /** Ob der Footer sichtbar ist (dann Timeline ausblenden) */
+    isFooterVisible = signal<boolean>(false);
+
     /** Scroll-Fortschritt in Prozent */
     scrollProgress = signal<number>(0);
 
+    /** Dynamischer Bottom-Offset für Timeline (um Footer zu vermeiden) */
+    timelineBottomOffset = signal<number>(40);
+
     /** IntersectionObserver für Sektionen */
     private observer: IntersectionObserver | null = null;
+    private footerObserver: IntersectionObserver | null = null;
 
     ngOnInit(): void {
         this.setupIntersectionObserver();
+        this.setupFooterObserver();
     }
 
     ngAfterViewInit(): void {
         this.observeSections();
+        this.observeFooter();
     }
 
     ngOnDestroy(): void {
         this.observer?.disconnect();
+        this.footerObserver?.disconnect();
     }
 
     /** Aktualisiert den Scroll-Fortschritt */
@@ -73,6 +82,7 @@ export class ScrollTimelineComponent implements OnInit, AfterViewInit, OnDestroy
         // Fix: Wenn ganz oben, immer den ersten Punkt (Hero) aktivieren
         if (window.scrollY < 100) {
             this.activeIndex.set(0);
+            this.isFooterVisible.set(false);
 
             // Auch "isPast" Status zurücksetzen
             const currentNodes = this.nodes();
@@ -94,9 +104,21 @@ export class ScrollTimelineComponent implements OnInit, AfterViewInit, OnDestroy
         const scrollTop = window.scrollY;
         const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
         this.scrollProgress.set(Math.min(100, Math.max(0, progress)));
+
+        // Timeline nach oben verschieben wenn nahe am Footer
+        // Footer-Höhe ist ca. 180px, Timeline startet bei 40px
+        if (progress > 80) {
+            // Zusätzlicher Offset: Je mehr gescrollt, desto höher die Timeline
+            const extraProgress = progress - 80; // 0-20
+            const footerOffset = (extraProgress / 20) * 180; // 0-180px
+            this.isFooterVisible.set(false); // Nicht verstecken
+            this.timelineBottomOffset.set(40 + footerOffset);
+        } else {
+            this.timelineBottomOffset.set(40); // Standard-Position
+        }
     }
 
-    /** Erstellt den IntersectionObserver */
+    /** Erstellt den IntersectionObserver für Sektionen */
     private setupIntersectionObserver(): void {
         const options: IntersectionObserverInit = {
             root: null,
@@ -111,6 +133,23 @@ export class ScrollTimelineComponent implements OnInit, AfterViewInit, OnDestroy
                 }
             });
         }, options);
+    }
+
+    /** Erstellt den Observer für den Footer */
+    private setupFooterObserver(): void {
+        this.footerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                this.isFooterVisible.set(entry.isIntersecting);
+            });
+        }, { rootMargin: '0px', threshold: 0.1 }); // Sobald 10% vom Footer da sind
+    }
+
+    /** Beobachtet den Footer */
+    private observeFooter(): void {
+        const footer = document.querySelector('footer');
+        if (footer && this.footerObserver) {
+            this.footerObserver.observe(footer);
+        }
     }
 
     /** Beobachtet alle Sektionen */

@@ -16,4 +16,7 @@ export class CardComponent {
 
     /** Optionales technisches Label (z.B. "TOOL_01") */
     @Input() label = '';
+
+    /** Ob das Externe-Link-Icon angezeigt werden soll */
+    @Input() showExternalIcon = false;
 }

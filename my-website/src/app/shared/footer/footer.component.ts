@@ -2,35 +2,28 @@
  * Footer Komponente
  * Footer mit Logo und Impressum-Link
  */
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-footer',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, RouterLink],
     templateUrl: './footer.component.html',
     styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
+    private router = inject(Router);
     /** Aktuelles Jahr für Copyright */
     currentYear = new Date().getFullYear();
 
     /** Scrollt zur Hero-Sektion (Logo-Klick) */
     scrollToTop(event: Event): void {
-        event.preventDefault();
-        const element = document.getElementById('hero');
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (this.router.url !== '/') {
+            return;
         }
-    }
-
-    /** Scrollt zum Impressum */
-    scrollToImpressum(event: Event): void {
         event.preventDefault();
-        const element = document.getElementById('impressum');
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }

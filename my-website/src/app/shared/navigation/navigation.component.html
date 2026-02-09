@@ -2,7 +2,8 @@
 <header class="nav" [class.nav--scrolled]="isScrolled()">
     <nav class="nav__container">
         <!-- Logo (links) -->
-        <a href="#hero" class="nav__logo" (click)="scrollToTop($event)" aria-label="Zurück zum Anfang">
+        <a routerLink="/" fragment="hero" class="nav__logo" (click)="scrollToTop($event)"
+            aria-label="Zurück zum Anfang">
             <img src="pa-logo.png" alt="PA Logo" class="nav__logo-img">
         </a>
 
@@ -10,8 +11,8 @@
         <ul class="nav__list">
             @for (link of navLinks; track link.id) {
             <li class="nav__item">
-                <a class="nav__link" [class.nav__link--active]="activeSection() === link.id" [href]="link.anchor"
-                    (click)="scrollToSection($event, link.anchor)">
+                <a class="nav__link" [class.nav__link--active]="activeSection() === link.id" routerLink="/"
+                    [fragment]="link.id" (click)="scrollToSection($event, link.anchor)">
                     {{ link.label }}
                 </a>
             </li>

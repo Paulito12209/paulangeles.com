@@ -2,8 +2,9 @@
  * Navigation Komponente
  * Sticky Hauptnavigation mit Logo und Links zu allen Sektionen
  */
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 /** Interface für Navigationslinks */
 interface NavLink {
@@ -15,11 +16,13 @@ interface NavLink {
 @Component({
     selector: 'app-navigation',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, RouterModule],
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent {
+    private router = inject(Router);
+
     /** Aktuell aktiver Abschnitt */
     activeSection = signal<string>('hero');
 
@@ -32,8 +35,7 @@ export class NavigationComponent {
         { id: 'about-me', label: 'Über mich', anchor: '#about-me' },
         { id: 'tools', label: 'Tools', anchor: '#tools' },
         { id: 'projects', label: 'Projekte', anchor: '#projects' },
-        { id: 'contact', label: 'Kontakt', anchor: '#contact' },
-        { id: 'impressum', label: 'Impressum', anchor: '#impressum' }
+        { id: 'contact', label: 'Kontakt', anchor: '#contact' }
     ];
 
     /** Aktualisiert den Scroll-Status */
@@ -43,46 +45,64 @@ export class NavigationComponent {
         this.updateActiveSection();
     }
 
-    /** Setzt die aktive Sektion basierend auf der Scroll-Position */
+    /** Setzt die aktive Sektion basierend auf der Scroll-Position - Sync mit App-Logik */
     private updateActiveSection(): void {
-        const sections = this.navLinks.map(link => link.id);
+        const viewportHeight = window.innerHeight;
+        const centerLine = viewportHeight / 2;
+        let activeId: string | null = null;
 
-        // Wenn ganz oben, immer Hero aktiv setzen
+        // Wenn ganz oben
         if (window.scrollY < 100) {
             this.activeSection.set('hero');
             return;
         }
 
-        for (const sectionId of sections.reverse()) {
-            const element = document.getElementById(sectionId);
+        // Center-Check Logik wie in App.ts
+        for (const link of this.navLinks) {
+            const element = document.getElementById(link.id);
             if (element) {
                 const rect = element.getBoundingClientRect();
-                // Angepasst: Trigger etwas früher/später je nach Bedarf
-                if (rect.top <= 200) {
-                    this.activeSection.set(sectionId);
+                if (rect.top <= centerLine && rect.bottom >= centerLine) {
+                    activeId = link.id;
                     break;
                 }
             }
+        }
+
+        if (activeId) {
+            this.activeSection.set(activeId);
         }
     }
 
     /** Scrollt zur Hero-Sektion (Logo-Klick) */
     scrollToTop(event: Event): void {
-        event.preventDefault();
-        const element = document.getElementById('hero');
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (this.router.url !== '/') {
+            // Wenn nicht auf Startseite, lass den RouterLink arbeiten
+            return;
         }
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    /** Scrollt sanft zu einer Sektion */
+    /** Scrollt sanft zu einer Sektion mit Offset um Subheadline zu verstecken */
     scrollToSection(event: Event, anchor: string): void {
+        if (this.router.url !== '/') {
+            // Wenn nicht auf Startseite, lass den RouterLink arbeiten
+            return;
+        }
+
         event.preventDefault();
         const targetId = anchor.replace('#', '');
         const element = document.getElementById(targetId);
 
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Manuelle Offset-Berechnung für Home-Page Smooth Scroll
+            const elementTop = element.getBoundingClientRect().top + window.scrollY;
+
+            window.scrollTo({
+                top: elementTop,
+                behavior: 'smooth'
+            });
         }
     }
 }

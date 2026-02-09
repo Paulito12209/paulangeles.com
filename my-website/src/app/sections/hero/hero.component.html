@@ -1,36 +1,40 @@
 <!-- Hero Sektion - Willkommensbereich -->
 <section id="hero" class="hero">
+    <!-- Magnetic Particles Background -->
+    <app-magnetic-particles></app-magnetic-particles>
+
     <div class="hero__container">
         <!-- Linke Seite: Text Content -->
         <div class="hero__content">
             <!-- Technisches Label -->
-            <span class="hero__label mono">WORK_IN_PROGRESS</span>
+            <span class="hero__label mono">VORSTELLUNG</span>
 
             <!-- Hauptüberschrift -->
             <h1 class="hero__title">
-                Willkommen in meiner
-                <span class="text--glossy">digitalen Werkstatt</span>
+                Hi, ich bin
+                <span class="text--glossy">Paul</span>
             </h1>
 
             <!-- Beschreibung -->
             <p class="hero__description">
-                Diese Website ist noch im Aufbau, aber sie gibt dir bereits einen Einblick
-                in meinen täglichen Workflow und meine liebsten Tools, die mir helfen,
-                täglich Fortschritte bei meinen persönlichen Projekten zu machen.
+                Diese Website ist gerade noch im Aufbau. Ich habe sie mit Hilfe von KI erstellt,
+                werde sie aber Schritt für Schritt weiter ausbauen und aktualisieren.
             </p>
-
-            <!-- Scroll-Hinweis -->
-            <div class="hero__scroll-hint">
-                <span class="hero__scroll-text">Scroll nach unten</span>
-                <div class="hero__scroll-arrow">↓</div>
-            </div>
         </div>
 
         <!-- Rechte Seite: Hero Image -->
         <div class="hero__image">
-            <div class="hero__image-placeholder">
-                <span class="hero__image-text">Hero Image</span>
-            </div>
+            <img src="paul-hero-img.png" alt="Paul Angeles Chaquire" class="hero__img">
         </div>
     </div>
+
+    <!-- Scroll-Hinweis (Zentriert unter beiden Spalten) -->
+    <button class="hero__scroll-trigger" (click)="scrollToNextSection()">
+        <span class="hero__scroll-text">Scroll nach unten</span>
+        <!-- Double Chevron SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="hero__scroll-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
+        </svg>
+    </button>
 </section>

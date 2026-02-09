@@ -1,19 +1,38 @@
 /* 
-  Footer Stile
-  Footer mit Logo und Navigation
+  Footer Stile - Dark Bento Design
+  Inspiriert von Raycast
 */
 
 /* BEM Block: footer */
 .footer {
     padding: 3rem 0 2rem;
     margin-top: 2rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-    background: rgba(255, 255, 255, 0.5);
+    background: #1A1A1A;
+    /* Dunkler Hintergrund */
+    color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+
+    /* Bento Grid Lines */
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 80px 80px;
+        pointer-events: none;
+    }
 }
 
 /* BEM Element: footer__container */
 .footer__container {
-    max-width: 100%;
+    max-width: var(--wrapper-max-width);
+    margin: 0 auto;
+    padding: 0 var(--wrapper-padding-inline);
+    position: relative;
+    z-index: 1;
 }
 
 /* BEM Element: footer__top */
@@ -23,7 +42,7 @@
     justify-content: space-between;
     margin-bottom: 2rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    /* border-bottom entfernt auf User-Wunsch */
 }
 
 /* BEM Element: footer__logo */
@@ -42,8 +61,9 @@
 /* BEM Element: footer__logo-img */
 .footer__logo-img {
     height: 48px;
-    width: auto;
+    width: 48px;
     object-fit: contain;
+    border-radius: 100%;
 }
 
 /* BEM Element: footer__links */
@@ -56,12 +76,12 @@
 .footer__link {
     font-size: 0.9375rem;
     font-weight: 500;
-    color: var(--color-text);
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     transition: color var(--transition-fast);
 
     &:hover {
-        color: var(--color-primary);
+        color: #FFFFFF;
     }
 }
 
@@ -73,7 +93,7 @@
 /* BEM Element: footer__copyright */
 .footer__copyright {
     font-size: 0.875rem;
-    color: var(--color-muted);
+    color: rgba(255, 255, 255, 0.4);
     margin: 0;
 }
 

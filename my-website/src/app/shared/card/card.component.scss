@@ -3,6 +3,12 @@
   Milchig-transparenter Hintergrund mit Blur
 */
 
+/* Host-Element muss volle Höhe einnehmen für Grid */
+:host {
+    display: block;
+    height: 100%;
+}
+
 /* BEM Block: card */
 .card {
     /* Liquid Glass Effekt */
@@ -21,6 +27,13 @@
 
     /* Layout */
     padding: 1.5rem;
+    height: 100%;
+    /* Volle Höhe */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Footer immer unten */
+
     transition:
         backdrop-filter var(--transition-normal),
         background var(--transition-normal),
@@ -44,14 +57,40 @@
     display: block;
     margin-bottom: 0.75rem;
     font-size: 0.75rem;
+
+    /* Rötliche Farbe wie angefordert */
+    color: var(--color-primary);
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+/* BEM Element: card__header */
+.card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 /* BEM Element: card__title */
 .card__title {
     font-size: 1.25rem;
     font-weight: 600;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0;
+    /* Margin wird vom Header übernommen */
     color: var(--color-text);
+    line-height: 1.3;
+}
+
+/* BEM Element: card__icon */
+.card__icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-primary);
+    /* Rötlich */
+    flex-shrink: 0;
+    opacity: 0.8;
 }
 
 /* BEM Element: card__content */
@@ -59,4 +98,8 @@
     font-size: 0.9375rem;
     color: var(--color-text);
     line-height: 1.6;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

@@ -36,7 +36,7 @@
 .sub-nav__container {
     max-width: var(--wrapper-max-width);
     margin: 0 auto;
-    padding: 0 var(--wrapper-padding);
+    padding: 0 var(--wrapper-padding-inline);
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -107,4 +107,18 @@
 .sub-nav__link--active {
     opacity: 1;
     color: var(--color-primary);
+}
+
+/* Responsive: Kleinere Bildschirme */
+@media (max-width: 768px) {
+    .sub-nav__link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.625rem;
+        /* 10px auf Mobile */
+    }
+
+    .sub-nav__label {
+        font-size: 0.75rem;
+        /* 12px auf Mobile */
+    }
 }

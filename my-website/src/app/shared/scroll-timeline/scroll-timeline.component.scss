@@ -9,13 +9,15 @@
     position: fixed;
     /* Positionierung: unten links */
     left: calc(50% - 720px + 80px);
-    bottom: 40px;
+    /* bottom wird dynamisch via [style.bottom.px] gesetzt */
     top: auto;
     transform: none;
     z-index: 50;
     display: flex;
     align-items: stretch;
     height: 200px;
+    transition: bottom 100ms ease-out;
+    /* Sanfte Animation beim Verschieben */
 
     /* Verstecken auf kleineren Bildschirmen */
     @media (max-width: 1440px) {
@@ -29,6 +31,13 @@
     @media (max-width: 768px) {
         display: none;
     }
+}
+
+/* Versteckt die Timeline wenn Footer sichtbar ist */
+.timeline--hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
 }
 
 /* BEM Element: timeline__track */

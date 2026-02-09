@@ -13,7 +13,7 @@
   --color-primary-sandy: #D4856A;
 
   /* Hintergrund und Text */
-  --color-bg: #FAFAFA;
+  --color-bg: #FFFFFF;
   --color-text: #1A1A1A;
   --color-muted: #CCCCCC;
 
@@ -23,7 +23,8 @@
   --content-padding: 2rem;
 
   /* Abstände */
-  --section-spacing: 6rem;
+  --section-spacing: 3.5rem;
+  /* ~56px wie gewünscht */
   --card-gap: 1.5rem;
 
   /* Übergangszeiten */
@@ -154,8 +155,37 @@ p {
    Sections
    ================================================ */
 section {
+  /* Padding normalisieren */
   padding: var(--section-spacing) 0;
+  position: relative;
+
+  /* Reset scroll-margin, da wir JS Scrolling nutzen */
+  scroll-margin-top: 0;
+
+  /* Hero Section ist IMMER aktiv/sichtbar */
+  &.hero {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
 }
+
+/* Section Labels - Standard: Rot/Pulsierend (Global) */
+.section-label {
+  position: relative;
+  z-index: 20;
+  margin-top: 16px;
+
+  /* Gradient Animation Text */
+  background: linear-gradient(90deg, #911E21, #ff5e62, #911E21, #ff5e62, #911E21);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: shine-red 4s linear infinite;
+}
+
+/* Aktiver Status: Label ist wir nun global gesetzt */
 
 /* ================================================
    Utilities
@@ -206,4 +236,30 @@ section {
   50% {
     opacity: 0.25;
   }
+}
+
+/* Pulsierender roter Verlauf - von links nach rechts */
+@keyframes shine-red {
+  0% {
+    background-position: 200% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Pulsierender roter Gradient für Section Labels */
+.text--pulse-red {
+  background: linear-gradient(90deg, #911E21, #ff5e62, #911E21, #ff5e62, #911E21);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: shine-red 4s linear infinite;
+
+  /* Wichtig: Über dem Overlay liegen */
+  position: relative;
+  z-index: 20;
 }
