@@ -1,0 +1,80 @@
+/* 
+  Projects Sektion Stile
+*/
+
+/* BEM Block: projects */
+.projects {
+    padding: var(--section-spacing) 0;
+}
+
+/* BEM Element: projects__header */
+.projects__header {
+    margin-bottom: 3rem;
+}
+
+/* BEM Element: projects__label */
+.projects__label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* BEM Element: projects__title */
+.projects__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+/* BEM Element: projects__notice */
+.projects__notice {
+    padding: 1rem 1.5rem;
+    background: rgba(145, 30, 33, 0.06);
+    border-left: 3px solid var(--color-primary);
+    max-width: 600px;
+
+    p {
+        margin: 0;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--color-text);
+        opacity: 0.85;
+    }
+}
+
+/* BEM Element: projects__grid */
+.projects__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap);
+
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* BEM Element: projects__item */
+.projects__item {
+    scroll-margin-top: 100px;
+}
+
+/* BEM Element: projects__status */
+.projects__status {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    background: rgba(145, 30, 33, 0.1);
+    border: 1px solid rgba(145, 30, 33, 0.2);
+}

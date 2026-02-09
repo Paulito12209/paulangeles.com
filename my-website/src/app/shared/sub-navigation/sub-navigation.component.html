@@ -1,0 +1,21 @@
+<!-- Sub-Navigation für Tools-Sektion -->
+<div class="sub-nav" [class.sub-nav--visible]="isVisible()">
+    <div class="sub-nav__container">
+        <!-- Statisches Label -->
+        <span class="sub-nav__label">Tools</span>
+
+        <!-- Scrollbare Tool-Liste -->
+        <div class="sub-nav__scroll" #toolsList>
+            <ul class="sub-nav__list">
+                @for (tool of tools; track tool.id) {
+                <li class="sub-nav__item">
+                    <a class="sub-nav__link" [class.sub-nav__link--active]="activeTool() === tool.id"
+                        [href]="'#tool-' + tool.id" (click)="scrollToTool($event, tool.id)">
+                        {{ tool.name }}
+                    </a>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

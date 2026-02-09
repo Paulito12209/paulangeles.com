@@ -1,0 +1,30 @@
+<!-- Projects Sektion -->
+<section id="projects" class="projects">
+    <!-- Sektion Header -->
+    <div class="projects__header">
+        <span class="projects__label mono">PROJEKTE</span>
+        <h2 class="projects__title">
+            Aktuelle <span class="text--glossy">Projekte</span>
+        </h2>
+
+        <!-- Status-Hinweis -->
+        <div class="projects__notice">
+            <p>
+                Diese Web-Apps sind derzeit noch in Arbeit, werden aber kontinuierlich
+                mit Updates und neuen Features weiterentwickelt.
+            </p>
+        </div>
+    </div>
+
+    <!-- Projekt-Karten Grid -->
+    <div class="projects__grid">
+        @for (project of projects; track project.id) {
+        <div [id]="'project-' + project.id" class="projects__item">
+            <app-card [title]="project.name" [label]="project.label">
+                <p>{{ project.description }}</p>
+                <span class="projects__status">{{ project.status }}</span>
+            </app-card>
+        </div>
+        }
+    </div>
+</section>

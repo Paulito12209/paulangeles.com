@@ -1,0 +1,42 @@
+/* 
+  About Me Sektion Stile
+*/
+
+/* BEM Block: about-me */
+.about-me {
+    padding: var(--section-spacing) 0;
+}
+
+/* BEM Element: about-me__label */
+.about-me__label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* BEM Element: about-me__title */
+.about-me__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+/* BEM Element: about-me__content */
+.about-me__content {
+    max-width: 700px;
+}
+
+/* BEM Element: about-me__text */
+.about-me__text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

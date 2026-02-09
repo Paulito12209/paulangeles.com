@@ -1,0 +1,57 @@
+/* 
+  Tools Sektion Stile
+  Grid-Layout für Tool-Karten
+*/
+
+/* BEM Block: tools */
+.tools {
+    padding: var(--section-spacing) 0;
+}
+
+/* BEM Element: tools__header */
+.tools__header {
+    margin-bottom: 3rem;
+}
+
+/* BEM Element: tools__label */
+.tools__label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* BEM Element: tools__title */
+.tools__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+/* BEM Element: tools__intro */
+.tools__intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    opacity: 0.85;
+    max-width: 600px;
+}
+
+/* BEM Element: tools__grid */
+.tools__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--card-gap);
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* BEM Element: tools__item */
+.tools__item {
+    scroll-margin-top: 140px;
+    /* Platz für beide Navigations-Leisten */
+}

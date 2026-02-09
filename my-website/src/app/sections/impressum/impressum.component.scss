@@ -1,0 +1,52 @@
+/* 
+  Impressum Sektion Stile
+*/
+
+/* BEM Block: impressum */
+.impressum {
+    padding: var(--section-spacing) 0;
+    padding-bottom: 4rem;
+}
+
+/* BEM Element: impressum__label */
+.impressum__label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* BEM Element: impressum__title */
+.impressum__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+/* BEM Element: impressum__content */
+.impressum__content {
+    max-width: 600px;
+}
+
+/* BEM Element: impressum__block */
+.impressum__block {
+    margin-bottom: 2rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* BEM Element: impressum__heading */
+.impressum__heading {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+}
+
+/* BEM Element: impressum__address */
+.impressum__address {
+    font-style: normal;
+    line-height: 1.8;
+    color: var(--color-text);
+    opacity: 0.85;
+}

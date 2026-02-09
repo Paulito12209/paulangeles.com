@@ -1,0 +1,46 @@
+/* 
+  Dot Grid Hintergrund-Stile
+  Erzeugt ein animiertes Punktraster mit pulsierendem Glanz-Effekt
+*/
+
+/* BEM Block: dot-grid */
+.dot-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+
+    /* Punkt-Raster als Hintergrundbild */
+    background-image: radial-gradient(circle at center,
+            rgba(145, 30, 33, 0.15) 1.5px,
+            transparent 1.5px);
+
+    /* 16px Abstand zwischen den Punkten */
+    background-size: 16px 16px;
+    background-position: 0 0;
+
+    /* Pulsierender Glanz-Effekt */
+    animation: dot-grid-pulse 4s ease-in-out infinite;
+}
+
+/* Animation für den pulsierenden Glanz-Effekt */
+@keyframes dot-grid-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        background-image: radial-gradient(circle at center,
+                rgba(145, 30, 33, 0.12) 1.5px,
+                transparent 1.5px);
+    }
+
+    50% {
+        opacity: 1;
+        background-image: radial-gradient(circle at center,
+                rgba(145, 30, 33, 0.22) 1.5px,
+                transparent 1.5px);
+    }
+}

@@ -1,0 +1,62 @@
+/* 
+  Card Stile mit Liquid Glass Effekt
+  Milchig-transparenter Hintergrund mit Blur
+*/
+
+/* BEM Block: card */
+.card {
+    /* Liquid Glass Effekt */
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    background: rgba(255, 255, 255, 0.25);
+
+    /* Rahmen - Keine abgerundeten Ecken */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0;
+
+    /* Innerer Schatten für Tiefe */
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 4px 20px rgba(0, 0, 0, 0.08);
+
+    /* Layout */
+    padding: 1.5rem;
+    transition:
+        backdrop-filter var(--transition-normal),
+        background var(--transition-normal),
+        box-shadow var(--transition-normal),
+        transform var(--transition-normal);
+
+    /* Hover-Effekt */
+    &:hover {
+        backdrop-filter: blur(20px) saturate(160%);
+        -webkit-backdrop-filter: blur(20px) saturate(160%);
+        background: rgba(255, 255, 255, 0.35);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            0 8px 32px rgba(0, 0, 0, 0.12);
+        transform: translateY(-2px);
+    }
+}
+
+/* BEM Element: card__label */
+.card__label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+}
+
+/* BEM Element: card__title */
+.card__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+}
+
+/* BEM Element: card__content */
+.card__content {
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    line-height: 1.6;
+}

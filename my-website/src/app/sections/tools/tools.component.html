@@ -1,0 +1,25 @@
+<!-- Tools Sektion -->
+<section id="tools" class="tools">
+    <!-- Sektion Header -->
+    <div class="tools__header">
+        <span class="tools__label mono">WERKZEUGE</span>
+        <h2 class="tools__title">
+            Meine <span class="text--glossy">Lieblings-Tools</span>
+        </h2>
+        <p class="tools__intro">
+            Diese Tools begleiten mich täglich und helfen mir, produktiver zu arbeiten
+            und kreative Ideen umzusetzen.
+        </p>
+    </div>
+
+    <!-- Tool-Karten Grid -->
+    <div class="tools__grid">
+        @for (tool of tools; track tool.id) {
+        <div [id]="'tool-' + tool.id" class="tools__item">
+            <app-card [title]="tool.name" [label]="tool.label">
+                <p>{{ tool.description }}</p>
+            </app-card>
+        </div>
+        }
+    </div>
+</section>

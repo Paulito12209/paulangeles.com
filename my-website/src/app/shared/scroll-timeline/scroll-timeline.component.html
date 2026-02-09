@@ -1,0 +1,22 @@
+<!-- Vertikaler Scroll-Fortschrittsindikator -->
+<aside class="timeline" aria-label="Scroll-Fortschritt">
+    <!-- Vertikale Linie mit Fortschrittsanzeige -->
+    <div class="timeline__track">
+        <!-- Hintergrundlinie -->
+        <div class="timeline__line"></div>
+
+        <!-- Fortschrittslinie -->
+        <div class="timeline__progress" [style.height.%]="scrollProgress()"></div>
+    </div>
+
+    <!-- Knotenpunkte für jede Sektion -->
+    <div class="timeline__nodes">
+        @for (node of nodes(); track node.sectionId; let i = $index) {
+        <button class="timeline__node" [class.timeline__node--active]="activeIndex() === i"
+            [class.timeline__node--past]="node.isPast" [attr.aria-label]="'Gehe zu ' + node.label"
+            (click)="scrollToSection(node.sectionId)">
+            <span class="timeline__dot"></span>
+        </button>
+        }
+    </div>
+</aside>

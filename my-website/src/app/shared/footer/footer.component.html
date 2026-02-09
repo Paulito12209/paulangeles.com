@@ -1,0 +1,29 @@
+<!-- Footer mit Logo und Navigation -->
+<footer class="footer">
+    <div class="footer__container">
+        <!-- Oberer Bereich: Logo und Links -->
+        <div class="footer__top">
+            <!-- Logo -->
+            <a href="#hero" class="footer__logo" (click)="scrollToTop($event)" aria-label="Zurück zum Anfang">
+                <img src="pa-logo.png" alt="PA Logo" class="footer__logo-img">
+            </a>
+
+            <!-- Footer Links -->
+            <div class="footer__links">
+                <a href="#impressum" class="footer__link" (click)="scrollToImpressum($event)">
+                    Impressum
+                </a>
+                <a href="mailto:kontakt@paulangeles.com" class="footer__link">
+                    kontakt&#64;paulangeles.com
+                </a>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer__bottom">
+            <p class="footer__copyright">
+                © {{ currentYear }} Paul Angeles Chaquire. Alle Rechte vorbehalten.
+            </p>
+        </div>
+    </div>
+</footer>

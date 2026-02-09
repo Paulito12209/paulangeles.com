@@ -1,0 +1,17 @@
+<!-- Card mit Liquid Glass Effekt -->
+<article class="card">
+    <!-- Technisches Label falls vorhanden -->
+    @if (label) {
+    <span class="card__label mono">{{ label }}</span>
+    }
+
+    <!-- Kartentitel -->
+    @if (title) {
+    <h3 class="card__title">{{ title }}</h3>
+    }
+
+    <!-- Inhalt wird von außen projiziert -->
+    <div class="card__content">
+        <ng-content></ng-content>
+    </div>
+</article>

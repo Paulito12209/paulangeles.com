@@ -1,0 +1,171 @@
+/* 
+  Hero Sektion Stile
+  Vollbild-Willkommensbereich mit Galaxy-Hintergrund
+  Höhe: 100vh minus 100px um nächste Section anzuzeigen
+*/
+
+/* BEM Block: hero */
+.hero {
+    /* Höhe so, dass die Subheadline der nächsten Section (ca. 100px) sichtbar ist */
+    height: calc(100vh - 100px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+
+    /* Galaxy Hintergrund - zentriert und max 1440px breit */
+    background-image: url('/galaxy-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Hintergrund begrenzen */
+    max-width: 1440px;
+    margin: 0 auto;
+
+    /* Solider weißer Hintergrund Overlay */
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.9);
+        z-index: 0;
+    }
+}
+
+/* BEM Element: hero__container */
+.hero__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    width: 100%;
+    max-width: var(--wrapper-max-width);
+    padding: 0 var(--wrapper-padding-inline);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 24px;
+    }
+}
+
+/* BEM Element: hero__content */
+.hero__content {
+    flex: 1;
+    max-width: 600px;
+
+    @media (max-width: 900px) {
+        max-width: 100%;
+    }
+}
+
+/* BEM Element: hero__label */
+.hero__label {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(145, 30, 33, 0.08);
+    border: 1px solid rgba(145, 30, 33, 0.15);
+}
+
+/* BEM Element: hero__title */
+.hero__title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+        font-size: 2.25rem;
+    }
+}
+
+/* BEM Element: hero__description */
+.hero__description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    opacity: 0.85;
+    margin-bottom: 2rem;
+}
+
+/* BEM Element: hero__scroll-hint */
+.hero__scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: 2rem;
+
+    @media (max-width: 900px) {
+        align-items: center;
+    }
+}
+
+/* BEM Element: hero__scroll-text */
+.hero__scroll-text {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    font-weight: 500;
+}
+
+/* BEM Element: hero__scroll-arrow */
+.hero__scroll-arrow {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+/* BEM Element: hero__image */
+.hero__image {
+    flex: 0 0 auto;
+
+    @media (max-width: 900px) {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+}
+
+/* BEM Element: hero__image-placeholder */
+.hero__image-placeholder {
+    width: 280px;
+    height: 350px;
+    border: 2px dashed var(--color-primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(145, 30, 33, 0.05);
+
+    @media (max-width: 900px) {
+        width: 200px;
+        height: 250px;
+    }
+}
+
+/* BEM Element: hero__image-text */
+.hero__image-text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    opacity: 0.7;
+}
+
+/* Bounce Animation für Pfeil */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+}

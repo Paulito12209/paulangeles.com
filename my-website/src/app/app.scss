@@ -1,0 +1,18 @@
+/* 
+  Haupt-App Stile
+  Container und Layout für die gesamte Anwendung
+*/
+
+/* App-Container - Wrapper für alle Sektionen */
+:host {
+    display: block;
+    min-height: 100vh;
+}
+
+/* Wrapper-Klasse wird in styles.scss definiert */
+/* Hier nur app-spezifische Überschreibungen */
+
+.wrapper {
+    /* Zusätzlicher Abstand oben für die feste Navigation */
+    padding-top: 0;
+}
