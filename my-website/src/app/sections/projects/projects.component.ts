@@ -12,6 +12,8 @@ interface Project {
     label: string;
     description: string;
     status: string;
+    link?: string;
+    github?: string;
 }
 
 @Component({
@@ -30,20 +32,25 @@ export class ProjectsComponent {
             label: 'PROJEKT_01',
             description: 'Eine innovative Web-App, die Lernprozesse vereinfacht und personalisiertes Lernen ermöglicht.',
             status: 'In Entwicklung'
+            // No link or github for Xool (Private)
         },
         {
             id: 'parabook',
             name: 'ParaBook',
             label: 'PROJEKT_02',
             description: 'Ein digitales Notizbuch, das auf dem PARA-System basiert und Wissensmanagement vereinfacht.',
-            status: 'In Entwicklung'
+            status: 'In Entwicklung',
+            link: 'https://github.com/Paulito12209/ParaBook',
+            github: 'https://github.com/Paulito12209/ParaBook'
         },
         {
             id: 'notizapp',
             name: 'NotizApp',
             label: 'PROJEKT_03',
             description: 'Eine minimalistische Notiz-Anwendung mit Fokus auf Einfachheit und schnelle Erfassung.',
-            status: 'In Entwicklung'
+            status: 'In Entwicklung',
+            link: '#', // Placeholder to keep icon visible
+            github: '#' // Placeholder for GitHub button
         }
     ];
 }

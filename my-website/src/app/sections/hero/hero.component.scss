@@ -118,7 +118,12 @@
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 4rem;
+
+    @media (max-width: 768px) {
+        margin-top: 1rem;
+    }
+
     background: none;
     border: none;
     cursor: pointer;
