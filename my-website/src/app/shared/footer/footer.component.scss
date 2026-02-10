@@ -58,12 +58,15 @@
     }
 }
 
-/* BEM Element: footer__logo-img */
-.footer__logo-img {
+/* BEM Element: footer__logo-box */
+.footer__logo-box {
     height: 48px;
     width: 48px;
-    object-fit: contain;
-    border-radius: 100%;
+    background-image: url("/paul-logo.png");
+    background-size: 150%;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* border-radius entfernt für quadratische Form */
 }
 
 /* BEM Element: footer__links */

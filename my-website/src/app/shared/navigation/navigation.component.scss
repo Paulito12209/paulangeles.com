@@ -42,7 +42,7 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    padding: 0.5rem;
+    padding: 0.5rem 0;
     transition: transform var(--transition-fast);
     flex-shrink: 0;
 
@@ -51,17 +51,20 @@
     }
 }
 
-/* BEM Element: nav__logo-img */
-.nav__logo-img {
+/* BEM Element: nav__logo-box */
+.nav__logo-box {
     height: 40px;
-    width: auto;
-    object-fit: contain;
+    width: 40px;
+    background-image: url("/paul-logo.png");
+    background-size: 150%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* BEM Element: nav__current-section (nur Mobile sichtbar) */
 .nav__current-section {
     display: none;
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     font-weight: 600;
     color: var(--color-primary);
     text-transform: uppercase;
@@ -191,9 +194,9 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
-    width: 36px;
-    height: 36px;
+    padding: 0.5rem 0;
+    width: 40px;
+    height: 40px;
     flex-shrink: 0;
 }
 
@@ -340,23 +343,24 @@
     }
 }
 
-@media (max-width: 768px) {
-    .nav__container {
-        padding: 0 24px;
-    }
+@media (max-width: 900px) {
 
-    /* Desktop Nav-Links ausblenden */
+    /* Desktop Nav-Links ausblenden, Burger anzeigen */
     .nav__list {
         display: none;
     }
 
-    /* Mobile: Aktuelle Sektion anzeigen */
     .nav__current-section {
         display: block;
     }
 
-    /* Mobile: Burger anzeigen */
     .nav__burger {
         display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav__container {
+        padding: 0 24px;
     }
 }
