@@ -1,9 +1,8 @@
 RewriteEngine On
-# If an existing asset or directory is requested go to it as it is
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+# Open existing files or directories directly (e.g. /portfolio/)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# If any other extension is requested (like .php, .html) but not found, 
-# you might want to handle it differently, but for Angular, we redirect everything to index.html
+# Redirect all other requests to index.html (for Angular Routing)
 RewriteRule ^ /index.html [L]
